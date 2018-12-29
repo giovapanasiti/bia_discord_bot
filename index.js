@@ -25,7 +25,7 @@ bot.on('message', (message => {
 
 // This action is triggered when one of those keyword is found in the message content
 bot.on('message', (message) => {
-    // splite the message with strings
+    // split the message in strings to be matched
     arr = message.content.split(" ")
 
     if (arr.indexOf('arruolarmi') >= 0  ) {

@@ -13,7 +13,8 @@ class ComandiCommand extends commando.Command {
     async run(message, args) {
         console.log(args)
         message.reply(`
-!overwatch : tutto quello che serve a Luc
+**!overwatch**: Tutto quello che devi sapere sulla sezione di Overwatch
+**!ps**: Tutto quello che devi sapere sulla sezione di Post Scriptum
         `);
     }
 }

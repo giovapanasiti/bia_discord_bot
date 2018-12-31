@@ -1,10 +1,6 @@
 require('dotenv').config()
 const commando = require('discord.js-commando');
 const bot = new commando.Client();
-// Maybe this would not be needed but we need it as we no 
-// longer have a defaultChannel
-const Discord = require('discord.js')
-const client = new Discord.Client();
 
 // This will register your 'random' group
 bot.registry.registerGroup('random', 'Random');
@@ -36,6 +32,52 @@ bot.on('message', (message => {
 }));
 
 
+// censorship on bad language
+bot.on('message', (message => {
+
+    var forbiddenWords = [
+        'cazzo', 'porco', 'puttana', 'ebreo', 'negro', 'stronzo', 'porca', 
+        'madonna', 'dio', 'gesu', 'coglione', 'troia', 'vaffanculo'
+    ] 
+    
+
+    if (forbiddenWords.some(word => message.content.includes(word))) {
+        message.delete();
+        message.reply('Hai utilizzato un linguaggio poco consono. Prossima volta moderati')
+    }
+
+    if (forbiddenWords.some(word => message.content.includes(word.toUpperCase()))) {
+        message.delete();
+        message.reply('Hai utilizzato un linguaggio poco consono. Prossima volta moderati')
+    }
+}));
+
+
+bot.on('message', (message => {
+
+    if (message.author.id == process.env.BOT_ID) {
+        return
+    }
+
+    var botIdentity = [
+        'bot'
+    ] 
+
+    var replies = [
+        'Ma cercavi proprio me? :heart_eyes: ',
+        ':see_no_evil: eccomi!!!',
+        ':robot: Mi hai chiamato? :robot: :robot: :robot: '
+    ]
+
+    if (botIdentity.some(word => message.content.includes(word))) {
+        message.reply(replies[Math.floor(Math.random()*replies.length)])
+        message.reply('Ricordati di usare **!comandi** per sapere che in modo posso esserti utile')
+    }
+}));
+
+
+
+
 // This action is triggered when one of those keyword is found in the message content
 bot.on('message', (message) => {
     // split the message in strings to be matched
@@ -53,9 +95,9 @@ bot.on('message', (message) => {
         message.reply('per arruolarti vai qui');
     } 
 
-    // if (arr.indexOf('arruolamento') >= 0  ) {
-    //     message.reply('per arruolarti vai qui');
-    // } 
+    if (arr.indexOf('arruolamento') >= 0  ) {
+        message.reply('per arruolarti vai qui');
+    } 
 
     if (arr.indexOf('partecipare') >= 0  ) {
         message.reply('per arruolarti vai qui');

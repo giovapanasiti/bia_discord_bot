@@ -22,7 +22,22 @@ bot.on("guildMemberAdd", member => {
 
 Scrivi in chat **'!comandi'** per avere informazioni su tutti i comandi disponibili
     `).catch(console.error);
-  });
+    
+    bot.channels.get(process.env.ADMIN_ID).send(`@here ${member.user} si e' unito. Ci sta qualcuno per accoglierlo?`).catch(console.error);
+});
+
+
+
+//  the bot notify the admins if a user leave
+bot.on("guildMemberRemove", member => {
+    let guild = member.guild;
+    bot.channels.get(process.env.ADMIN_ID).send(`${member.user} Ha abbandonato il server`).catch(console.error);
+});
+
+
+
+
+
 
 // Demo action to show links
 bot.on('message', (message => {

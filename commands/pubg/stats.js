@@ -12,13 +12,11 @@ class PubgCommand extends commando.Command {
     }
     async run(message, args) {
         console.log(args)
-        message.reply(`
-                      La sezione =BIA= PUBG è strutturata come segue:
-                        *-Ogni martedì e mercoledì organizziamo partite in nostri server privati
-                        *-Al momento stiamo cercando di creare dei team competitivi per partecipare a tornei nazionali e internazionali 
-                        *-Responsabili:* @=BIA= Corny, @=BIA= Audax, @=BIA= Mephisto
-        
-                      `);
+        message.reply(`La sezione =BIA= PUBG è strutturata come segue:
+
+- Ogni martedì e mercoledì organizziamo partite in nostri server privati
+- Al momento stiamo cercando di creare dei team competitivi per partecipare a tornei nazionali e internazionali 
+- Responsabili:* @=BIA= Corny, @=BIA= Audax, @=BIA= Mephisto`);
     }
 }
 
